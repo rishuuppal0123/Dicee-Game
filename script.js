@@ -25,14 +25,23 @@ if (randomNumber1 > randomNumber2) {
     document.querySelector("h1").innerHTML = "It's a Draw!";
 }
 
-function switchTheme(e) {
-    if (e.target.checked) {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-        localStorage.setItem('theme', 'light');
-    }
-}
 
-toggleSwitch.addEventListener('change', switchTheme, false);
+
+var checkbox = document.querySelector('input[name=mode]');
+
+checkbox.addEventListener('change', function() {
+    if (this.checked) {
+        trans()
+        document.documentElement.setAttribute('data-theme', 'lighttheme')
+    } else {
+        trans()
+        document.documentElement.setAttribute('data-theme', 'darktheme')
+    }
+})
+
+let trans = () => {
+    document.documentElement.classList.add('transition');
+    window.setTimeout(() => {
+        document.documentElement.classList.remove('transition');
+    }, 1000)
+}
